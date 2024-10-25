@@ -1,3 +1,4 @@
+from notifier_botty import login_to_chegg, refresh_chegg, telegram_bot_sendtext
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -5,133 +6,62 @@ import time
 from datetime import datetime, timedelta
 import pytz
 import requests
-#Statusbot
-def telegram_bot_sendtext(bot_message):
-    bot_token = '7689900582:AAEqvL6FpyCoALd6iOvwGneRJvbrQlYrWvw'
-    bot_chatID = '6966110728'
-    send_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + \
-                '&parse_mode=MarkdownV2&text=' + str(bot_message).replace('.', '\\.')  # Escape the dot character
-    response = requests.get(send_text)
-    return response.json()
-
-#Notifier
-def telegram_bot_sendques (bot_message):
-    bot_token = '8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM'
-    bot_chatID = '1296818887'
-    send_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + \
-                '&parse_mode=MarkdownV2&text=' + str(bot_message).replace('.', '\\.')  # Escape the dot character
-    response = requests.get(send_text)
-    return response.json()
-
-#variables
-sub = "Ithika ID"
-username = "itika.singh@triviumservice.com"
-password = "Cik-1604-24@021"
-login_text= f"{sub} Logged in"
-limit_texts = f"Limit hit {sub}"
-flag = True
-alert = f"Question available on {sub}"
-while flag:
-    try:
-        # Set up the Chrome WebDriver
-        options = webdriver.ChromeOptions()
-        options.add_argument('--headless')
-        options.add_argument('--no-sandbox')
-        options.add_argument('--disable-dev-shm-usage')
-        driver = webdriver.Chrome(options=options)
-
-        # Open the Chegg website and log in
-        driver.get("https://expert.chegg.com/auth")
-        time.sleep(3)
-
-        #print(driver.find_element(By.XPATH, "/html/body").text)
-
-        # Username
-        element = driver.find_element(By.XPATH, "/html/body/div/main/section/div/div/div/form/div[1]/div/div[1]/div/input")  # Replace with the correct XPath
-        element.send_keys(username)
-        #element.send_keys(Keys.ENTER)
-        time.sleep(3)
-
-        # Password
-        passw = driver.find_element(By.XPATH, "/html/body/div/main/section/div/div/div/form/div[1]/div/div[2]/div/input")  # Replace with the correct XPath
-        passw.send_keys(password)
-        passw.send_keys(Keys.ENTER)
-        time.sleep(3)
-        flag = False
-    except Exception as e:
-
-        telegram_bot_sendtext(f"Password {sub}")
-
-telegram_bot_sendtext(login_text)
+import multiprocessing
 
 
-# Navigate to the authoring page
-driver.get("https://expert.chegg.com/qna/authoring/answer")
-time.sleep(3)
+# Account credentials (you can add more accounts here)
+accounts = [
+    {"username": "anwarchegg05@gmail.com", "password": "Author@05", "user_bot_chatID": '1155462778', "account_name": "Anwars", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
+    {"username": "sunitha05chegg@gmail.com", "password": "Chegg@050402", "user_bot_chatID": '1155462778', "account_name": "Sunithas", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
+    {"username": "rahulchegg5@gmail.com", "password": "Author@05", "user_bot_chatID": '1155462778', "account_name": "Rahuls", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
+    {"username": "nirupeshcs@icloud.com", "password": "#Hitlin3945", "user_bot_chatID": '1155462778', "account_name": "Nirupeshs", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
+    # Add more accounts if necessary
+]
 
-i = 1
-while True:
-    try:
-        driver.get("https://expert.chegg.com/qna/authoring/answer")
-        time.sleep(3)
-        limit = driver.current_url
-        limit_text = f"{limit}"
+accept_option = True
+start_time = 0  # Starting time. Default 0. In 24-hour format
+end_time = 25  # Ending time. Default 25. In 24-hour format
 
-        if limit_text != "https://expert.chegg.com/qna/authoring/answer":
-            time.sleep(3)
-            driver.get("https://expert.chegg.com/qna/authoring/answer")
-            time.sleep(3)
-            limit = driver.current_url
-            limit_text = f"{limit}"
-            if limit_text != "https://expert.chegg.com/qna/authoring/answer":
-                time.sleep(3)
-                driver.get("https://expert.chegg.com/qna/authoring/answer")
-                time.sleep(3)
-                limit = driver.current_url
-                limit_text = f"{limit}"
-                if limit_text != "https://expert.chegg.com/qna/authoring/answer":
-                    time.sleep(3)
-                    driver.get("https://expert.chegg.com/qna/authoring/answer")
-                    time.sleep(3)
-                    limit = driver.current_url
-                    limit_text = f"{limit}"
 
-                    # Define the time zone (UTC+5:30)
-                    tz = pytz.timezone('Asia/Kolkata')
-                    # Get the current time in UTC+5:30
-                    now = datetime.now(tz)
-                    # Define the target time (12:30 PM)
-                    target_time = now.replace(hour=12, minute=30, second=0, microsecond=0)
-                    # If the current time is already past 12:30 PM, set the target time to the next day
-                    if now > target_time:
-                        target_time += timedelta(days=1)
-                    # Calculate the difference in seconds
-                    n = (target_time - now).total_seconds()
-                    telegram_bot_sendtext(limit_texts)
-                    time.sleep(n)
+def refresh_account(account):
+    username = account["username"]
+    password = account["password"]
+    user_bot_chatID = account["user_bot_chatID"]
+    account_name = account["account_name"]
+    user_bot_token = account["user_bot_token"]  # Same token for all accounts
 
-        driver.get("https://expert.chegg.com/qna/authoring/answer")
-        time.sleep(5)
-        message = driver.find_element(By.XPATH, "/html/body/div[1]/main/div/div/div[2]/div[1]")
-        text_to_copy = message.text
+    # Set up Chrome WebDriver for this account
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
 
-        if text_to_copy == "Thank you for your efforts on Chegg Q&A! Unfortunately, no Qs are available in your queue at the moment.":
-            driver.refresh()
-            
-            if i <= 1:
-                telegram_bot_sendtext(i)
-            elif i % 1000 == 0:
-                status = f"UP Running...  {i/10} {sub}"
-                telegram_bot_sendtext(status)
-            i += 1
-            
-        else:
-            telegram_bot_sendques(f"{alert}")
-            telegram_bot_sendtext(f"{alert}")
-            time.sleep(720)
+    # Each account gets its own Chrome instance
+    driver = webdriver.Chrome(options=options)
 
-    except Exception as e:
-        telegram_bot_sendtext(f"An error occurred {sub}")
-        
-# Quit the WebDriver
-driver.quit()
+    # Attempt to log in
+    flag_login = True
+    while flag_login:
+        flag_login = login_to_chegg(username, password, driver,account_name)
+    login_texts = f"Login on {account_name}"
+    telegram_bot_sendtext(login_texts,user_bot_token,user_bot_chatID)    
+
+
+    # Start refreshing for the account
+    refresh_chegg(driver, accept_option, start_time, end_time, user_bot_token, user_bot_chatID, account_name)
+    exit_texts = f"Loop exit on {account_name}"
+    telegram_bot_sendtext(exit_texts,user_bot_token,user_bot_chatID)  
+    
+
+
+if __name__ == "__main__":
+    # Create a process for each account
+    processes = []
+    for account in accounts:
+        process = multiprocessing.Process(target=refresh_account, args=(account,))
+        processes.append(process)
+        process.start()
+
+    # Optionally join the processes to ensure the script waits for all to finish (though in infinite loops, this won't happen)
+    for process in processes:
+        process.join()
