@@ -15,6 +15,13 @@ accounts = [
     {"username": "sunitha05chegg@gmail.com", "password": "Chegg@050402", "user_bot_chatID": '1155462778', "account_name": "Sunithas", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
     {"username": "rahulchegg5@gmail.com", "password": "Author@05", "user_bot_chatID": '1155462778', "account_name": "Rahuls", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
     {"username": "nirupeshcs@icloud.com", "password": "#Hitlin3945", "user_bot_chatID": '1155462778', "account_name": "Nirupeshs", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
+    {"username": "vinaykundu17@gmail.com", "password": "Vinayk@15", "user_bot_chatID": '1155462778', "account_name": "Vinay", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
+    {"username": "innocentvermagi@gmail.com", "password": "Chegg@123", "user_bot_chatID": '1155462778', "account_name": "Deepak", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
+    {"username": "shabagrohiya@gmail.com", "password": "Chegg@123", "user_bot_chatID": '1155462778', "account_name": "Nitesh", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
+    {"username": "cheggexpert271@gmail.com", "password": "Chegg@123", "user_bot_chatID": '1155462778', "account_name": "Shekar", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
+    {"username": "devilagrohiya@gmail.com", "password": "Chegg@123", "user_bot_chatID": '1155462778', "account_name": "Ajay", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
+    {"username": "vinaykundu17@gmail.com", "password": "Vinayk@15", "user_bot_chatID": '1155462778', "account_name": "Vinay", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
+    {"username": "innocentvermagi@gmail.com", "password": "Chegg@123", "user_bot_chatID": '1155462778', "account_name": "Deepak", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"}
     # Add more accounts if necessary
 ]
 
