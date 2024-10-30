@@ -11,17 +11,10 @@ import multiprocessing
 
 # Account credentials (you can add more accounts here)
 accounts = [
-    {"username": "anwarchegg05@gmail.com", "password": "Author@05", "user_bot_chatID": '1155462778', "account_name": "Anwars test", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
-    {"username": "sunitha05chegg@gmail.com", "password": "Chegg@050402", "user_bot_chatID": '1155462778', "account_name": "Sunithas test", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
-    {"username": "rahulchegg5@gmail.com", "password": "Author@05", "user_bot_chatID": '1155462778', "account_name": "Rahuls test", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
-    {"username": "nirupeshcs@icloud.com", "password": "#Hitlin3945", "user_bot_chatID": '1155462778', "account_name": "Nirupeshs test", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
-    {"username": "vinaykundu17@gmail.com", "password": "Vinayk@15", "user_bot_chatID": '1155462778', "account_name": "Vinay test", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
-    {"username": "innocentvermagi@gmail.com", "password": "Chegg@123", "user_bot_chatID": '1155462778', "account_name": "Deepak test", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
-    {"username": "shabagrohiya@gmail.com", "password": "Chegg@123", "user_bot_chatID": '1155462778', "account_name": "Nitesh test", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
-    {"username": "cheggexpert271@gmail.com", "password": "Chegg@123", "user_bot_chatID": '1155462778', "account_name": "Shekar test", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
-    {"username": "devilagrohiya@gmail.com", "password": "Chegg@123", "user_bot_chatID": '1155462778', "account_name": "Ajay test", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
-    {"username": "vinaykundu17@gmail.com", "password": "Vinayk@15", "user_bot_chatID": '1155462778', "account_name": "Vinay test", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
-    {"username": "innocentvermagi@gmail.com", "password": "Chegg@123", "user_bot_chatID": '1155462778', "account_name": "Deepak test", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"}
+    {"username": "anwarchegg05@gmail.com", "password": "Author@05", "user_bot_chatID": '1155462778', "account_name": "Anwar", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
+    {"username": "sunitha05chegg@gmail.com", "password": "Chegg@050402", "user_bot_chatID": '1155462778', "account_name": "Sunitha", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
+    {"username": "rahulchegg5@gmail.com", "password": "Author@05", "user_bot_chatID": '1155462778', "account_name": "Rahul", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
+    {"username": "nirupeshcs@icloud.com", "password": "#Hitlin3945", "user_bot_chatID": '1155462778', "account_name": "Nirupesh", "user_bot_token" : "8131045025:AAE9_BMb5i2pk479mubtilbSIUilPA25jWM"},
     # Add more accounts if necessary
 ]
 
